@@ -22,7 +22,7 @@ data = load_data()
 def home_page():
     st.title("Almond Weight Prediction App")
     
-    st.image("almond_image.jpeg", caption="Types of Almonds", use_column_width=True)  # Replace with your image path
+    st.image("almond_image.Jpeg")  # Replace with your image path
     st.video("almond_video.mp4")  # Replace with your video path
     
     st.write("""
