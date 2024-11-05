@@ -9,10 +9,6 @@ This is a web-based application developed using **Streamlit** for predicting the
 - [Usage](#usage)
 - [Dataset](#dataset)
 - [Model Training](#model-training)
-- [File Structure](#file-structure)
-- [Screenshots](#screenshots)
-- [Contributions](#contributions)
-- [License](#license)
 
 ## Introduction
 The **Almond Weight Prediction App** is designed for predicting almond weights using a pre-trained machine learning model. It also allows users to explore dataset distributions, train a custom classification model, and upload images for visualization.
@@ -31,3 +27,41 @@ The **Almond Weight Prediction App** is designed for predicting almond weights u
 
 2. Navigate to the project directory:
    cd almond-weight-prediction-app
+
+3. Install the required Python packages:
+   pip install -r requirements.txt
+   Ensure you have joblib, pandas, streamlit, scikit-learn, matplotlib, seaborn, and plotly installed.
+
+4. Run the Streamlit app:
+   streamlit run app.py
+
+## Usage
+1. Start the app by running the command: streamlit run app.py.
+2. Navigate through the sidebar to explore the different sections:
+   Home: Overview and welcome content.
+   Almond Classification Model: Customize model training with input sliders.
+   Prediction: Input almond feature details and get a weight prediction.
+   
+3. Upload images for visualization on the relevant page.
+
+## Dataset
+The application uses a dataset named almond.csv that contains the following columns:
+   Gender: 1 for male, 0 for female
+   Height_cm
+   Weight_kg
+   Cholesterol_Level
+   BMI
+   Blood_Glucose_Level
+   Bone_Density
+   Vision_Sharpness
+   Hearing_Ability
+   Age
+   almond_meal_weight_g (Target variable)
+Ensure the almond.csv file is placed in the root directory for the app to load properly.
+
+## Model Training
+The model_page() function allows users to train a RandomForestClassifier with adjustable hyperparameters, such as:
+   n_estimators: Number of trees in the forest.
+   max_depth: Maximum depth of the trees.
+   random_state: Seed for reproducibility.
+The model's performance is shown via an accuracy score and a confusion matrix plot.
