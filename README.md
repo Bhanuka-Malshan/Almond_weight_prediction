@@ -45,19 +45,20 @@ The **Almond Weight Prediction App** is designed for predicting almond weights u
 3. Upload images for visualization on the relevant page.
 
 ## Dataset
-The application uses a dataset named almond.csv that contains the following columns:
-   Gender: 1 for male, 0 for female
-   Height_cm
-   Weight_kg
-   Cholesterol_Level
-   BMI
-   Blood_Glucose_Level
-   Bone_Density
-   Vision_Sharpness
-   Hearing_Ability
-   Age
-   almond_meal_weight_g (Target variable)
-Ensure the almond.csv file is placed in the root directory for the app to load properly.
+The application uses a dataset named almond.csv that contains the following columns: 
+1. Gender: 1 for male, 0 for female
+2. Height_cm
+3. Weight_kg
+4. Cholesterol_Level
+5. BMI
+6. Blood_Glucose_Level
+7. Bone_Density
+8. Vision_Sharpness
+9. Hearing_Ability
+10. Age
+11. almond_meal_weight_g (Target variable)
+
+    Ensure the almond.csv file is placed in the root directory for the app to load properly.
 
 ## Model Training
 The model_page() function allows users to train a RandomForestClassifier with adjustable hyperparameters, such as:
