@@ -58,7 +58,7 @@ The application uses a dataset named almond.csv that contains the following colu
 10. Age
 11. almond_meal_weight_g (Target variable)
 
-    Ensure the almond.csv file is placed in the root directory for the app to load properly.
+Ensure the almond.csv file is placed in the root directory for the app to load properly.
 
 ## Model Training
 The model_page() function allows users to train a RandomForestClassifier with adjustable hyperparameters, such as:
