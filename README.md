@@ -65,4 +65,5 @@ The model_page() function allows users to train a RandomForestClassifier with ad
 1. n_estimators: Number of trees in the forest.
 2. max_depth: Maximum depth of the trees.
 3. random_state: Seed for reproducibility.
+
 The model's performance is shown via an accuracy score and a confusion matrix plot.
