@@ -29,3 +29,5 @@ The **Almond Weight Prediction App** is designed for predicting almond weights u
    ```bash
    git clone https://github.com/your-username/almond-weight-prediction-app.git
 
+2. Navigate to the project directory:
+   cd almond-weight-prediction-app
