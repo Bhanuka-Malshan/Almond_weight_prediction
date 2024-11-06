@@ -12,14 +12,14 @@ import plotly.express as px
 # Function to load the dataset
 @st.cache_data
 def load_data():
-    data = pd.read_csv("Almond1.csv")  # Ensure correct path
+    data = pd.read_csv("Almond1.csv")  # Replace with the correct path
     return data
 
 # Load the pre-trained model with caching
 @st.cache_resource
 def load_model():
     try:
-        model = joblib.load("almond.joblib")  # Ensure correct model path
+        model = joblib.load("almond.joblib")  # Replace with the correct path
         return model
     except Exception as e:
         st.error(f"Failed to load model: {e}")
