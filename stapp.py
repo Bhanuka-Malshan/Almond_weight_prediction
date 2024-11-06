@@ -107,21 +107,26 @@ def model_page():
     if uploaded_file is not None:
         st.image(uploaded_file, caption="Uploaded Image", use_column_width=True)
 
-# Define the prediction page
 def prediction_page():
     st.title("Almond Weight Prediction")
 
-    loaded_model = joblib.load(open('almond.joblib',  'rb'))
+    # Load the pre-trained model
+    loaded_model = joblib.load(open('almond.joblib', 'rb'))
 
     def almond_prediction(input_data):
-        input_data_as_numpy_array = np.asarray(input_data)
-        input_data_reshaped = input_data_as_numpy_array.reshape(1, -1)
-        prediction = loaded_model.predict(input_data_reshaped)
-        return f"Predicted Almond weight: {prediction[0]}g"
+        try:
+            # Convert input data to numpy array and reshape it
+            input_data_as_numpy_array = np.asarray(input_data, dtype=float)  # Convert to float for compatibility
+            input_data_reshaped = input_data_as_numpy_array.reshape(1, -1)
+            # Predict using the loaded model
+            prediction = loaded_model.predict(input_data_reshaped)
+            return f"Predicted Almond weight: {prediction[0]}g"
+        except ValueError as e:
+            return "Error: Please ensure all inputs are valid numbers."
 
-      
     def main():
         st.markdown("### Enter your details")
+        # Collect inputs from the user
         Gender = st.text_input('Gender (Male=1 , Female=0)')
         Height_cm = st.text_input('Height (cm)')
         Weight_kg = st.text_input('Weight (kg)')
@@ -133,24 +138,19 @@ def prediction_page():
         Hearing_Ability = st.text_input('Hearing Ability')
         Age = st.text_input('Age')
 
-        #diagnosis = ''
-        
+        # Button to trigger prediction
         if st.button('Click to Test Result'):
             with st.spinner('Please wait...'):
-                diagnosis = almond_prediction([Gender, Height_cm, Weight_kg,Cholesterol_Level,BMI,Blood_Glucose_Level,Bone_Density,Vision_Sharpnes,Hearing_Ability,Age])
-                st.success(diagnosis)
+                try:
+                    # Convert inputs to appropriate format for prediction
+                    inputs = [
+                        float(Gender), float(Height_cm), float(Weight_kg), float(Cholesterol_Level), 
+                        float(BMI), float(Blood_Glucose_Level), float(Bone_Density), 
+                        float(Vision_Sharpnes), float(Hearing_Ability), float(Age)
+                    ]
+                    diagnosis = almond_prediction(inputs)
+                    st.success(diagnosis)
+                except ValueError:
+                    st.error("Please enter valid numeric values for all fields.")
 
-    if __name__ == '__main__':
-        main()
-
-# Sidebar Navigation
-st.sidebar.title("Navigation")
-page_selection = st.sidebar.radio("Go to", ["Home", "Almond Classification Model", "Prediction"])
-
-# Sidebar - Link to the prediction page
-if page_selection == "Home":
-    home_page()
-elif page_selection == "Almond Classification Model":
-    model_page()
-elif page_selection == "Prediction":
-    prediction_page()
+    main()
